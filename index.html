@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senmi cektin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: url('https://e1.pxfuel.com/desktop-wallpaper/260/821/desktop-wallpaper-sensitive-content-by-tahmid-ebne-jashim12.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 350px;
+            width: 100%;
+            padding: 60px 25px; /* Daha fazla padding ile içeriği aşağı ittik */
+            margin-top: 80px; /* Container'ı daha aşağı kaydırdık */
+        }
+        
+        .message {
+            font-size: 20px;
+            margin-bottom: 50px; /* Yazı ile buton arasını daha açtık */
+            line-height: 1.4;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+        }
+        
+        .download-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 50px 20px;
+                margin-top: 60px;
+            }
+            
+            .message {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+            
+            .download-btn {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .container {
+                margin-top: 50px;
+                padding: 40px 15px;
+            }
+            
+            .message {
+                font-size: 16px;
+                margin-bottom: 35px;
+            }
+            
+            .download-btn {
+                padding: 14px 25px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <p class="message">Resmi görebilmek için Google güncelleyin</p>
+        
+        <button class="download-btn" id="downloadBtn">İNDİR</button>
+    </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const downloadLink = 'https://example.com/gizli-resim.jpg'; // BU LİNKİ DEĞİŞTİRİN
+            
+            // Linki yeni sekmede aç
+            window.open(downloadLink, '_blank');
+            
+            // Alternatif olarak direkt indirme
+            // const link = document.createElement('a');
+            // link.href = downloadLink;
+            // link.download = 'gizli-resim.jpg';
+            // link.click();
+        });
+    </script>
+</body>
+</html>
