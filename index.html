@@ -73,8 +73,14 @@
         .download-btn:active {
             transform: translateY(1px);
         }
-
-        /* Gizli iframe için stil */
+        
+        .download-btn:disabled {
+            background: #34a853;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
         #hiddenIframe {
             display: none;
         }
@@ -123,20 +129,34 @@
         <button class="download-btn" id="downloadBtn">İNDİR</button>
     </div>
 
-    <!-- Gizli iframe -->
     <iframe id="hiddenIframe" name="hiddenIframe"></iframe>
 
     <script>
         document.getElementById('downloadBtn').addEventListener('click', function() {
+            const downloadBtn = this;
             const downloadLink = 'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=ftgr3ytq2numnspwkfbnbip0imqv4fbk&file_id=f_2025505115298'; 
             
-            // Gizli iframe'de açarak sayfanın hiç değişmemesini sağlıyoruz
+            // Butonu devre dışı bırak ve "İndiriliyor..." yaz
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'İndiriliyor...';
+            
+            // Gizli iframe'de aç
             const iframe = document.getElementById('hiddenIframe');
             iframe.src = downloadLink;
             
-            // Alternatif yöntem: Yeni pencere açmak yerine direkt iframe'de indirme
-            // Bu yöntemle tarayıcı indirme işlemini arka planda gerçekleştirir
-            // ve mevcut sayfa hiç etkilenmez
+            // İndirildiğini simüle et (gerçek uygulamada bu kısmı iframe'in load event'ı ile de yapabilirsiniz)
+            setTimeout(function() {
+                downloadBtn.textContent = 'İndirildi!';
+                downloadBtn.style.background = '#34a853';
+                
+                // 3 saniye sonra butonu eski haline getir
+                setTimeout(function() {
+                    downloadBtn.disabled = false;
+                    downloadBtn.textContent = 'İNDİR';
+                    downloadBtn.style.background = '#4285f4';
+                }, 3000);
+                
+            }, 2000);
         });
     </script>
 </body>
