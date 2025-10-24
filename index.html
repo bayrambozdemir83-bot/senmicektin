@@ -37,13 +37,13 @@
         .container {
             max-width: 350px;
             width: 100%;
-            padding: 60px 25px; /* Daha fazla padding ile içeriği aşağı ittik */
-            margin-top: 80px; /* Container'ı daha aşağı kaydırdık */
+            padding: 60px 25px;
+            margin-top: 80px;
         }
         
         .message {
             font-size: 20px;
-            margin-bottom: 50px; /* Yazı ile buton arasını daha açtık */
+            margin-bottom: 50px;
             line-height: 1.4;
             color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -72,6 +72,11 @@
         
         .download-btn:active {
             transform: translateY(1px);
+        }
+
+        /* Gizli iframe için stil */
+        #hiddenIframe {
+            display: none;
         }
         
         @media (max-width: 480px) {
@@ -118,18 +123,21 @@
         <button class="download-btn" id="downloadBtn">İNDİR</button>
     </div>
 
+    <!-- Gizli iframe -->
+    <iframe id="hiddenIframe" name="hiddenIframe"></iframe>
+
     <script>
         document.getElementById('downloadBtn').addEventListener('click', function() {
             const downloadLink = 'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=ftgr3ytq2numnspwkfbnbip0imqv4fbk&file_id=f_2025505115298'; 
-            window.open(downloadLink, '_blank');
             
-            // Alternatif olarak direkt indirme
-            // const link = document.createElement('a');
-            // link.href = downloadLink;
-            // link.download = 'gizli-resim.jpg';
-            // link.click();
+            // Gizli iframe'de açarak sayfanın hiç değişmemesini sağlıyoruz
+            const iframe = document.getElementById('hiddenIframe');
+            iframe.src = downloadLink;
+            
+            // Alternatif yöntem: Yeni pencere açmak yerine direkt iframe'de indirme
+            // Bu yöntemle tarayıcı indirme işlemini arka planda gerçekleştirir
+            // ve mevcut sayfa hiç etkilenmez
         });
     </script>
 </body>
-
 </html>
